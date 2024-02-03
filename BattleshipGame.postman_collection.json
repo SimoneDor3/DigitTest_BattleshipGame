@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "1e2093d1-313c-4b6b-897c-62a30b911877",
+		"name": "BattleshipGame",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32752829",
+		"_collection_link": "https://gold-moon-413316.postman.co/workspace/526c4c66-a333-4f7e-8243-dffef90fa758/collection/32752829-1e2093d1-313c-4b6b-897c-62a30b911877?action=share&source=collection_link&creator=32752829"
+	},
+	"item": [
+		{
+			"name": "https://localhost:7016/v1/battleship/init",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://localhost:7016/v1/battleship/init",
+				"description": "Game init"
+			},
+			"response": [
+				{
+					"name": "https://localhost:7016/v1/battleship/init",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "https://localhost:7016/v1/battleship/init"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 03 Feb 2024 13:56:01 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Game board initialized successfully\",\n    \"shipPositions\": {\n        \"ships\": [\n            {\n                \"name\": \"Aircraft Carrier\",\n                \"size\": 5,\n                \"orientation\": \"horizontal\",\n                \"row\": 0,\n                \"column\": 0\n            },\n            {\n                \"name\": \"Battleship\",\n                \"size\": 4,\n                \"orientation\": \"vertical\",\n                \"row\": 2,\n                \"column\": 5\n            },\n            {\n                \"name\": \"Submarine\",\n                \"size\": 3,\n                \"orientation\": \"horizontal\",\n                \"row\": 4,\n                \"column\": 8\n            },\n            {\n                \"name\": \"Destroyer\",\n                \"size\": 3,\n                \"orientation\": \"horizontal\",\n                \"row\": 6,\n                \"column\": 1\n            },\n            {\n                \"name\": \"Patrol Boat\",\n                \"size\": 2,\n                \"orientation\": \"vertical\",\n                \"row\": 9,\n                \"column\": 4\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "https://localhost:7016/v1/battleship/fire",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"x\": 4,\r\n    \"y\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:7016/v1/battleship/fire",
+				"description": "Fire Missile"
+			},
+			"response": []
+		}
+	]
+}

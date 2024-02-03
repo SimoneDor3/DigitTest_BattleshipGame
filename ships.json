@@ -1,0 +1,40 @@
+{
+  "Ships": [
+    {
+      "Name": "Aircraft Carrier",
+      "Size": 5,
+      "Orientation": "horizontal",
+      "Row": 0,
+      "Column": 0
+    },
+    {
+      "Name": "Battleship",
+      "Size": 4,
+      "Orientation": "vertical",
+      "Row": 2,
+      "Column": 5
+    },
+    {
+      "Name": "Submarine",
+      "Size": 3,
+      "Orientation": "horizontal",
+      "Row": 4,
+      "Column": 8
+    },
+    {
+      "Name": "Destroyer",
+      "Size": 3,
+      "Orientation": "horizontal",
+      "Row": 6,
+      "Column": 1
+    },
+    {
+      "Name": "Patrol Boat",
+      "Size": 2,
+      "Orientation": "vertical",
+      "Row": 9,
+      "Column": 4
+    }
+  ]
+}
+
