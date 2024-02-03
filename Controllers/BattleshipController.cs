@@ -1,5 +1,6 @@
 ﻿using DigitTest_BattleshipGame.Models;
 using DigitTest_BattleshipGame.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using System;
@@ -9,6 +10,7 @@ using System.Xml.Linq;
 
 namespace BattleshipGame.Controllers
 {
+    [EnableCors("AllowOrigin")] // Enable CORS 
     [Route("v1/[controller]")]
     [ApiController]
     public class BattleshipController : ControllerBase
@@ -17,6 +19,7 @@ namespace BattleshipGame.Controllers
         private readonly IGameService _gameService;
         private ShipPositions _shipPositions;
 
+        // Constructor to inject dependencies
         public BattleshipController(IGameService gameService, ShipPositions shipPositions)
         {
             _gameService = gameService;
@@ -29,20 +32,7 @@ namespace BattleshipGame.Controllers
         {
             try
             {
-                return Ok(new { message = "Game board initialized successfully", _shipPositions });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { error = "An error occurred while initializing the game board", message = ex.Message });
-            }
-        }
-
-        [HttpGet("initcheck")]
-        public IActionResult CheckInitializeGameBoard()
-        {
-            try
-            {
-
+                _shipPositions.HitCoordinates.Clear(); //Clear HitCoordinates every time I inizialize the board
                 return Ok(new { message = "Game board initialized successfully", _shipPositions });
             }
             catch (Exception ex)
@@ -52,12 +42,14 @@ namespace BattleshipGame.Controllers
         }
 
         [HttpPost("fire")]
-        public IActionResult FireMissile([FromBody] Missile missile)
+        public IActionResult FireMissile([FromBody] String coordinatesString)
         {
             try
             {
-                int x = missile.X;
-                int y = missile.Y;
+                //Convert in object coordinates and extract letter and number
+                Coordinates coordinates = new Coordinates(coordinatesString);
+                char x = coordinates.Letter;
+                int y = coordinates.Number;
 
                 // Call method to fire missile and get result
                 var result = _gameService.FireMissile(x, y);

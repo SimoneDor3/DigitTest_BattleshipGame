@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitTest_BattleshipGame", "DigitTest_BattleshipGame.csproj", "{DB154C4A-64C3-46B0-9A97-40DB7007B8D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitTest_BattleshipGame", "DigitTest_BattleshipGame.csproj", "{DB154C4A-64C3-46B0-9A97-40DB7007B8D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BattleshipGame_Frontend", "BattleshipGame_Frontend", "{C363D481-4576-414B-BB23-52E555C2178A}"
+	ProjectSection(SolutionItems) = preProject
+		index.html = index.html
+		script.js = script.js
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

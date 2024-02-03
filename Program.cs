@@ -7,6 +7,7 @@ using System;
 using System.IO;
 using System.Text.Json;
 using System.Xml.Linq;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,11 +16,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddScoped<IGameService, GameService>();
 builder.Services.AddSingleton<ShipPositions>(ServiceProvider => {
-    string shipsJsonPath = "ships.json";
-    string jsonString = System.IO.File.ReadAllText(shipsJsonPath);
-    var shipPositions = JsonSerializer.Deserialize<ShipPositions>(jsonString);
-    return shipPositions;
+    return ShipPositions.loadShipsPositionFromFile();
 });
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigin", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -37,6 +46,9 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseCors("AllowOrigin");
+
 app.MapControllers();
+
 
 app.Run();

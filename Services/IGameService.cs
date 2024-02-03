@@ -2,6 +2,6 @@
 {
     public interface IGameService
     {
-        string FireMissile(int x, int y);
+        string FireMissile(char letter, int number);
     }
 }
